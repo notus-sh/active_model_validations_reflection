@@ -8,15 +8,19 @@ module ActiveModel
       extend ActiveSupport::Concern
 
       module ClassMethods
-        def validators_of_kinds(*validator_kinds)
+        def validators_of_kinds(*kinds)
+          return validators if kinds.size.zero?
+
           validators.select do |validator|
-            validator_kinds.include?(validator.kind)
+            kinds.include?(validator.kind)
           end
         end
 
-        def validators_on_of_kinds(attribute, *validator_kinds)
+        def validators_on_of_kinds(attribute, *kinds)
+          return validators_on(attribute) if kinds.size.zero?
+
           validators_on(attribute).select do |validator|
-            validator_kinds.include?(validator.kind)
+            kinds.include?(validator.kind)
           end
         end
       end

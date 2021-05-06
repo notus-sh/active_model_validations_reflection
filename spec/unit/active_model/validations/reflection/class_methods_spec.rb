@@ -4,6 +4,18 @@ RSpec.describe ActiveModel::Validations::Reflection::ClassMethods do
   subject(:model) { Mirror }
 
   describe '.validators_of_kinds' do
+    context 'when called with no kind' do
+      it 'returns validators of any kind' do
+        validators = model.validators_of_kinds
+        expect(validators).to all(be_a(ActiveModel::EachValidator))
+      end
+
+      it 'returns all validators of any kind' do
+        validators = model.validators_of_kinds
+        expect(validators.size).to eq(6)
+      end
+    end
+
     context 'when called with a single kind' do
       it 'returns only validators of this kind' do
         validators = model.validators_of_kinds(:presence)
@@ -32,6 +44,18 @@ RSpec.describe ActiveModel::Validations::Reflection::ClassMethods do
   end
 
   describe '.validators_on_of_kinds' do
+    context 'when called with no kind' do
+      it 'returns validators of any kind' do
+        validators = model.validators_on_of_kinds(:reflectivity)
+        expect(validators).to all(be_a(ActiveModel::EachValidator))
+      end
+
+      it 'returns all validators of any kind' do
+        validators = model.validators_on_of_kinds(:reflectivity)
+        expect(validators.size).to eq(3)
+      end
+    end
+
     context 'when called with a single kind' do
       it 'returns only validators of this kind' do
         validators = model.validators_on_of_kinds(:reflectivity, :presence)
