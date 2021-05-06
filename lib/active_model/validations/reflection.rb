@@ -7,6 +7,28 @@ module ActiveModel
     module Reflection
       extend ActiveSupport::Concern
 
+      module Helpers
+        class << self
+          def flat_validator?(validator)
+            !(validator.options.key?(:if) || validator.options.key?(:unless))
+          end
+
+          def relevant_validator?(validator, instance)
+            condition = validator.options.key?(:if) ? validator.options[:if] : validator.options[:unless]
+            result = evaluate_condition(condition, instance)
+
+            (validator.options.key?(:unless) ? !result : !!result)
+          end
+
+          def evaluate_condition(condition, instance)
+            return condition.call(instance) if condition.respond_to?(:call)
+            return instance.send(condition) if condition.is_a?(::Symbol) && instance.respond_to?(condition)
+
+            condition
+          end
+        end
+      end
+
       module ClassMethods
         def validators_of_kinds(*kinds)
           return validators if kinds.size.zero?
@@ -18,7 +40,7 @@ module ActiveModel
 
         def flat_validators_of_kinds(*kinds)
           validators_of_kinds(*kinds).select do |validator|
-            !(validator.options.key?(:if) || validator.options.key?(:unless))
+            Helpers.flat_validator?(validator)
           end
         end
 
@@ -32,8 +54,16 @@ module ActiveModel
 
         def flat_validators_on_of_kinds(attribute, *kinds)
           validators_on_of_kinds(attribute, *kinds).select do |validator|
-            !(validator.options.key?(:if) || validator.options.key?(:unless))
+            Helpers.flat_validator?(validator)
           end
+        end
+      end
+
+      def relevant_validators_on(attribute, *kinds)
+        self.class.validators_on_of_kinds(attribute, *kinds).select do |validator|
+          next true if Helpers.flat_validator?(validator)
+
+          Helpers.relevant_validator?(validator, self)
         end
       end
     end
