@@ -1,2 +1,11 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   NewCops: enable
+
+# DSLs produce long blocks
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
