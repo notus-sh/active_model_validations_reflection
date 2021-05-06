@@ -59,6 +59,14 @@ module ActiveModel
         end
       end
 
+      def relevant_validators(*kinds)
+        self.class.validators_of_kinds(*kinds).select do |validator|
+          next true if Helpers.flat_validator?(validator)
+
+          Helpers.relevant_validator?(validator, self)
+        end
+      end
+
       def relevant_validators_on(attribute, *kinds)
         self.class.validators_on_of_kinds(attribute, *kinds).select do |validator|
           next true if Helpers.flat_validator?(validator)

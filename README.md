@@ -7,7 +7,7 @@
 
 ## Installation
 
-`Rack::AddressMunging` is distributed as a gem and available on [rubygems.org](https://rubygems.org/gems/rack-address_munging) so you can add it to your `Gemfile` or install it manually with:
+`ActiveModel::Validations::Reflection` is distributed as a gem and available on [rubygems.org](https://rubygems.org/gems/active_model_validations_reflection) so you can add it to your `Gemfile` or install it manually with:
 
 ```ruby
 gem install active_model_validations_reflection
@@ -61,9 +61,9 @@ Article.validators_on_of_kinds(:date, :timeliness)
 # => []
 ```
 
-### `#relevant_validators_on(attribute, *kinds)`
+### `#relevant_validators(*kinds)` & `#relevant_validators_on(attribute, *kinds)`
 
-Returns validator that will be applied to the named attribute considering the instance current state: flat validators and conditional validators whose condition is met.  
+Returns validator that will be applied considering the instance current state: flat validators and conditional validators whose condition is met.  
 
 ```ruby
 class Article < ApplicationRecord
@@ -77,6 +77,8 @@ class Article < ApplicationRecord
 end
 
 article = Article.new
+article.relevant_validators
+# => [#<ActiveModel::Validations::PresenceValidator […]>]
 article.relevant_validators_on(:date)
 # => [#<ActiveModel::Validations::PresenceValidator […]>]
 
