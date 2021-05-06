@@ -13,7 +13,8 @@ class Mirror
               less_than_or_equal_to: 100
             },
             inclusion: {
-              in: 1.0..100.0
+              in: 1.0..100.0,
+              unless: :square
             }
 
   validates :shape,
@@ -23,5 +24,13 @@ class Mirror
             }
 
   validates :flatness,
-            presence: { if: :square }
+            if: :square,
+            presence: true,
+            format: {
+              with: /\A[0-9]+-[0-9]+µm\z/
+            }
+
+  def square
+    shape == :square
+  end
 end
