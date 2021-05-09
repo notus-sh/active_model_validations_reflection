@@ -1,6 +1,6 @@
 # ActiveModel::Validations::Reflection
 
-[![Build Status](https://travis-ci.org/notus-sh/active_model_validations_reflection.svg?branch=master)](https://travis-ci.org/notus-sh/active_model_validations_reflection)
+[![Build Status](https://travis-ci.com/notus-sh/active_model_validations_reflection.svg?branch=master)](https://travis-ci.org/notus-sh/active_model_validations_reflection)
 [![Gem Version](https://badge.fury.io/rb/active_model_validations_reflection.svg)](https://badge.fury.io/rb/active_model_validations_reflection)
 
 `ActiveModel::Validations::Reflection` extends `ActiveModel` reflection capabilities on validations.
