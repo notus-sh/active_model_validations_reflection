@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-gemspec
+gemspec path: '../active_model_validations_reflection.gemspec'
 gem 'activemodel', '~> 6.1.0'
