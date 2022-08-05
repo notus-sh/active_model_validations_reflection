@@ -1,7 +1,6 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.5
   - 2.6
   - 2.7
   - 3.0
@@ -13,8 +12,6 @@ gemfile:
 # Exclude rubies < 2.7 for ActiveModel < 7.0
 jobs:
   exclude:
-    - rvm: 2.5
-      gemfile: Gemfile
     - rvm: 2.6
       gemfile: Gemfile
 
