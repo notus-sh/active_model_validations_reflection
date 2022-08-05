@@ -8,8 +8,8 @@ rvm:
   - 3.1
 gemfile:
   - Gemfile
-  - gemfile/rails-6.1.x.gemfile
-  - gemfile/rails-6.0.x.gemfile
+  - gemfiles/rails-6.0.x.gemfile
+  - gemfiles/rails-6.1.x.gemfile
 # Exclude rubies < 2.7 for ActiveModel < 7.0
 jobs:
   exclude:
