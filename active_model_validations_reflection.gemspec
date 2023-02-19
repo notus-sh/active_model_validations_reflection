@@ -13,11 +13,24 @@ Gem::Specification.new do |spec|
   spec.description   = 'An ActiveModel extension for more expressive validations reflection'
   spec.homepage      = 'https://github.com/notus-sh/active_model_validations_reflection'
 
-  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+  raise 'RubyGems 2.0 or newer is required.' unless spec.respond_to?(:metadata)
+
+  spec.metadata = {
+    'allowed_push_host' => 'https://rubygems.org',
+
+    'bug_tracker_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/issues',
+    'changelog_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/blob/master/CHANGELOG.md',
+    'homepage_uri' => 'https://github.com/notus-sh/active_model_validations_reflection',
+    'source_code_uri' => 'https://github.com/notus-sh/active_model_validations_reflection',
+    'funding_uri' => 'https://opencollective.com/notus-sh'
+  }
 
   spec.require_paths = ['lib']
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+
+  excluded_dirs = %r{^(.github|dev|spec)/}
+  excluded_files = %w[.gitignore .rspec .rubocop.yml Gemfile Gemfile.lock Rakefile]
+  spec.files = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(excluded_dirs) || excluded_files.include?(f)
   end
 
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
