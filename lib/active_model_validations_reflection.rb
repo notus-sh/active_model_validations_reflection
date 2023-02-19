@@ -3,5 +3,5 @@
 require 'active_model'
 require 'active_model/validations/reflection'
 
-module ActiveModelValidationsReflection
+module ActiveModelValidationsReflection # :nodoc:
 end

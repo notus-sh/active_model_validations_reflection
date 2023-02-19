@@ -1,11 +1,12 @@
 require:
+  - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 2.6
   NewCops: enable
 
-# DSLs produce long blocks
-Metrics/BlockLength:
+Naming/FileName:
   Exclude:
-    - 'spec/**/*_spec.rb'
+    - 'dev/gemfiles/*.gemfile'

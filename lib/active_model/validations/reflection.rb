@@ -4,10 +4,10 @@ require 'active_support/concern'
 
 module ActiveModel
   module Validations
-    module Reflection
+    module Reflection # :nodoc:
       extend ActiveSupport::Concern
 
-      module Helpers
+      module Helpers # :nodoc:
         class << self
           def flat_validator?(validator)
             !(validator.options.key?(:if) || validator.options.key?(:unless))
@@ -29,9 +29,9 @@ module ActiveModel
         end
       end
 
-      module ClassMethods
+      module ClassMethods # :nodoc:
         def validators_of_kinds(*kinds)
-          return validators if kinds.size.zero?
+          return validators if kinds.empty?
 
           validators.select do |validator|
             kinds.include?(validator.kind)
@@ -45,7 +45,7 @@ module ActiveModel
         end
 
         def validators_on_of_kinds(attribute, *kinds)
-          return validators_on(attribute) if kinds.size.zero?
+          return validators_on(attribute) if kinds.empty?
 
           validators_on(attribute).select do |validator|
             kinds.include?(validator.kind)
