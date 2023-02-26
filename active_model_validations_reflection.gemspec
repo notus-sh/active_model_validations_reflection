@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     'allowed_push_host' => 'https://rubygems.org',
+    'rubygems_mfa_required' => 'true',
 
     'bug_tracker_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/issues',
     'changelog_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/blob/master/CHANGELOG.md',
