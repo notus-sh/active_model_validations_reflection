@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
     'rubygems_mfa_required' => 'true',
 
     'bug_tracker_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/issues',
-    'changelog_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/blob/master/CHANGELOG.md',
+    'changelog_uri' => 'https://github.com/notus-sh/active_model_validations_reflection/blob/main/CHANGELOG.md',
     'homepage_uri' => 'https://github.com/notus-sh/active_model_validations_reflection',
     'source_code_uri' => 'https://github.com/notus-sh/active_model_validations_reflection',
     'funding_uri' => 'https://opencollective.com/notus-sh'
