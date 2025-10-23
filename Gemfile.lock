@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_model_validations_reflection (0.1.2)
+    active_model_validations_reflection (0.2.0)
       activemodel (>= 3.2)
       activesupport (>= 3.2)
 
@@ -106,7 +106,7 @@ DEPENDENCIES
   rubocop-rspec
 
 CHECKSUMS
-  active_model_validations_reflection (0.1.2)
+  active_model_validations_reflection (0.2.0)
   activemodel (8.1.0) sha256=43aa66565a601483e6c614d02cb2090168c91a803ddb954e2b0ef24d22de745e
   activesupport (8.1.0) sha256=d4adf40725be7bbc2a16936a6cf41b175a46ba0c5ccdb703ea4ed7c8801e070a
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
