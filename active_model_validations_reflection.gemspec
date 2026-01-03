@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
     f.match(excluded_dirs) || excluded_files.include?(f)
   end
 
-  spec.required_ruby_version = '>= 3.1'
+  spec.required_ruby_version = '>= 3.2'
 
   spec.add_dependency  'activemodel',    '>= 3.2'
   spec.add_dependency  'activesupport',  '>= 3.2'
